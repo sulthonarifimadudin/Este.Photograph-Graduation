@@ -22,11 +22,11 @@ const authenticSignature = localFont({
 export const metadata: Metadata = {
   title: "Este Photograph - Graduation",
   description: "Capturing timeless editorial stories. Professional graduation photography that elevates your milestone into a cinematic memory.",
-  metadataBase: new URL("https://estephotograph-graduation.vercel.app"),
+  metadataBase: new URL("https://estephotograph.my.id"),
   openGraph: {
     title: "Este Photograph - Graduation",
     description: "Capturing timeless editorial stories. Professional graduation photography that elevates your milestone into a cinematic memory.",
-    url: "https://estephotograph-graduation.vercel.app",
+    url: "https://estephotograph.my.id",
     siteName: "Este Photograph - Graduation",
     images: [
       {
