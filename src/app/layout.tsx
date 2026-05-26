@@ -21,7 +21,30 @@ const authenticSignature = localFont({
 
 export const metadata: Metadata = {
   title: "Este Photograph - Graduation",
-  description: "Capturing timeless editorial stories.",
+  description: "Capturing timeless editorial stories. Professional graduation photography that elevates your milestone into a cinematic memory.",
+  metadataBase: new URL("https://estephotograph-graduation.vercel.app"),
+  openGraph: {
+    title: "Este Photograph - Graduation",
+    description: "Capturing timeless editorial stories. Professional graduation photography that elevates your milestone into a cinematic memory.",
+    url: "https://estephotograph-graduation.vercel.app",
+    siteName: "Este Photograph - Graduation",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Este Photograph - Graduation Photography",
+      },
+    ],
+    locale: "id_ID",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Este Photograph - Graduation",
+    description: "Capturing timeless editorial stories. Professional graduation photography that elevates your milestone into a cinematic memory.",
+    images: ["/og-image.jpg"],
+  },
 };
 
 export default function RootLayout({
