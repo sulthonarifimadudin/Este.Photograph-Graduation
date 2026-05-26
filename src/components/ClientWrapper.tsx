@@ -61,25 +61,31 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
           </div>
         </div>
 
-        {/* Mobile Header — 3 nav links shown directly */}
-        <div className="flex md:hidden justify-between items-center px-margin-mobile py-3 w-full">
+        {/* Mobile Header — 4 nav links shown directly */}
+        <div className="flex md:hidden justify-between items-center px-2 py-3 w-full">
           <Link
-            className={`flex-1 text-center font-body-md text-sm py-1 transition-all duration-300 ${pathname === '/portfolio' ? 'text-primary font-bold border-b-2 border-primary' : 'text-on-surface-variant'}`}
+            className={`flex-1 text-center font-body-md text-xs py-1 transition-all duration-300 ${pathname === '/portfolio' ? 'text-primary font-bold border-b-2 border-primary' : 'text-on-surface-variant'}`}
             href="/portfolio"
           >
             Gallery
           </Link>
           <Link
-            className={`flex-1 text-center font-body-md text-sm py-1 transition-all duration-300 ${pathname === '/#packages' ? 'text-primary font-bold border-b-2 border-primary' : 'text-on-surface-variant'}`}
+            className={`flex-1 text-center font-body-md text-xs py-1 transition-all duration-300 ${pathname === '/#packages' ? 'text-primary font-bold border-b-2 border-primary' : 'text-on-surface-variant'}`}
             href="/#packages"
           >
             Services
           </Link>
           <Link
-            className={`flex-1 text-center font-body-md text-sm py-1 transition-all duration-300 ${pathname === '/book' ? 'text-primary font-bold border-b-2 border-primary' : 'text-on-surface-variant'}`}
+            className={`flex-1 text-center font-body-md text-xs py-1 transition-all duration-300 ${pathname === '/book' ? 'text-primary font-bold border-b-2 border-primary' : 'text-on-surface-variant'}`}
             href="/book"
           >
             Book Now
+          </Link>
+          <Link
+            className={`flex-1 text-center font-body-md text-xs py-1 transition-all duration-300 ${pathname === '/track' ? 'text-primary font-bold border-b-2 border-primary' : 'text-on-surface-variant'}`}
+            href="/track"
+          >
+            Track
           </Link>
         </div>
       </header>

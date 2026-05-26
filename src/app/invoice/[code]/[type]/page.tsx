@@ -37,7 +37,7 @@ export default function InvoicePage() {
   const isPaid = isDp ? booking.dpPaid : booking.pelunasanPaid;
 
   return (
-    <main className="min-h-screen bg-white text-black p-8 md:p-16 font-body-md">
+    <main className="min-h-screen bg-white text-black p-4 md:p-16 font-body-md overflow-x-hidden">
       {/* Hide print button when printing */}
       <div className="max-w-4xl mx-auto mb-8 flex justify-end print:hidden">
         <button 
@@ -49,32 +49,32 @@ export default function InvoicePage() {
         </button>
       </div>
 
-      <div className="max-w-4xl mx-auto border border-black/10 rounded-xl p-10 md:p-16 shadow-2xl print:shadow-none print:border-none print:p-0">
+      <div className="max-w-4xl mx-auto border border-black/10 rounded-xl p-5 md:p-16 shadow-2xl print:shadow-none print:border-none print:p-0">
         
         {/* Header */}
-        <div className="flex justify-between items-start mb-16 pb-8 border-b border-black/10">
+        <div className="flex flex-col md:flex-row justify-between items-start mb-10 md:mb-16 pb-6 md:pb-8 border-b border-black/10 gap-4">
           <div>
-            <h1 className="font-headline-xl text-4xl mb-2 text-primary">Este.Photograph</h1>
+            <h1 className="font-headline-xl text-3xl md:text-4xl mb-2 text-primary">Este.Photograph</h1>
             <p className="text-sm text-black/60">Capturing timeless editorial stories.</p>
             <p className="text-sm text-black/60 mt-4">@estephotograph<br/>+62 815 1596 4494</p>
           </div>
-          <div className="text-right">
-            <h2 className="font-headline-lg text-4xl text-black/20 uppercase tracking-widest mb-4">INVOICE</h2>
-            <p className="font-mono font-bold text-xl">{booking.bookingCode}-{isDp ? 'DP' : 'FNL'}</p>
+          <div className="md:text-right">
+            <h2 className="font-headline-lg text-3xl md:text-4xl text-black/20 uppercase tracking-widest mb-3">INVOICE</h2>
+            <p className="font-mono font-bold text-lg md:text-xl">{booking.bookingCode}-{isDp ? 'DP' : 'FNL'}</p>
             <p className="text-sm mt-2 font-label-caps tracking-widest text-black/40">DATE ISSUED</p>
             <p className="text-sm font-bold">{new Date().toLocaleDateString('en-GB')}</p>
           </div>
         </div>
 
         {/* Client Info & Status */}
-        <div className="flex justify-between mb-16">
+        <div className="flex flex-col md:flex-row justify-between mb-10 md:mb-16 gap-6">
           <div>
             <p className="text-[10px] font-label-caps tracking-widest text-black/40 mb-2">BILLED TO</p>
-            <p className="font-headline-lg text-2xl mb-1">{booking.clientName}</p>
+            <p className="font-headline-lg text-xl md:text-2xl mb-1">{booking.clientName}</p>
             <p className="text-sm text-black/60">{booking.email}</p>
             <p className="text-sm text-black/60">{booking.phone}</p>
           </div>
-          <div className="text-right">
+          <div className="md:text-right">
             <p className="text-[10px] font-label-caps tracking-widest text-black/40 mb-2">PAYMENT STATUS</p>
             {isPaid ? (
               <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-1.5 rounded-full font-bold text-sm">
@@ -88,7 +88,7 @@ export default function InvoicePage() {
               </div>
             )}
             
-            <p className="text-[10px] font-label-caps tracking-widest text-black/40 mt-6 mb-1">SESSION SCHED</p>
+            <p className="text-[10px] font-label-caps tracking-widest text-black/40 mt-4 mb-1">SESSION SCHED</p>
             <p className="font-bold text-sm">{booking.sessionDate} at {booking.sessionTime}</p>
           </div>
         </div>
@@ -135,8 +135,8 @@ export default function InvoicePage() {
         </table>
 
         {/* Total */}
-        <div className="flex justify-end mb-16">
-          <div className="w-64">
+        <div className="flex justify-end mb-10 md:mb-16">
+          <div className="w-full md:w-64">
             <div className="flex justify-between mb-2">
               <span className="text-black/60">Subtotal</span>
               <span className="font-mono">Rp{amount.toLocaleString('id-ID')}</span>
