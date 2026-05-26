@@ -19,7 +19,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
   return (
     <>
       <header
-        className={`fixed top-0 w-full z-50 backdrop-blur-xl border-b border-primary/10 transition-all duration-300 ${
+        className={`fixed top-0 w-full z-50 backdrop-blur-xl border-b border-primary/10 transition-all duration-300 print:hidden ${
           scrolled ? "shadow-md bg-white/80" : "bg-white/40 dark:bg-primary-container/40"
         }`}
       >
