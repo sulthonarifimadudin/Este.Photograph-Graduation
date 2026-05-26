@@ -23,14 +23,15 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
           scrolled ? "shadow-md bg-white/80" : "bg-white/40 dark:bg-primary-container/40"
         }`}
       >
-        <div className="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 w-full max-w-container-max mx-auto relative">
+        {/* Desktop Header */}
+        <div className="hidden md:flex justify-between items-center px-margin-desktop py-4 w-full max-w-container-max mx-auto relative">
           <Link
             className="font-headline-lg text-headline-lg tracking-tight text-primary dark:text-primary-fixed z-10"
             href="/"
           >
             <span className="font-extrabold tracking-tighter">Este.Photograph</span>
           </Link>
-          <nav className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 items-center gap-8 z-10">
+          <nav className="flex absolute left-1/2 transform -translate-x-1/2 items-center gap-8 z-10">
             <Link
               className={`hover:text-primary hover:bg-white/10 transition-all duration-300 font-body-md text-body-md px-3 py-2 rounded-md ${pathname === '/portfolio' ? 'text-primary font-bold border-b-2 border-primary pb-1' : 'text-on-surface-variant'}`}
               href="/portfolio"
@@ -50,7 +51,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
               Book Now
             </Link>
           </nav>
-          <div className="hidden md:flex items-center gap-4">
+          <div className="flex items-center gap-4">
             <Link
               className="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-caps text-label-caps hover:bg-secondary transition-colors duration-300 scale-95 active:scale-90 shadow-md"
               href="/track"
@@ -58,10 +59,28 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
               Track Booking
             </Link>
           </div>
-          {/* Mobile Menu Toggle */}
-          <button aria-label="Toggle Menu" className="md:hidden text-primary p-2">
-            <span className="material-symbols-outlined text-3xl">menu</span>
-          </button>
+        </div>
+
+        {/* Mobile Header — 3 nav links shown directly */}
+        <div className="flex md:hidden justify-between items-center px-margin-mobile py-3 w-full">
+          <Link
+            className={`flex-1 text-center font-body-md text-sm py-1 transition-all duration-300 ${pathname === '/portfolio' ? 'text-primary font-bold border-b-2 border-primary' : 'text-on-surface-variant'}`}
+            href="/portfolio"
+          >
+            Gallery
+          </Link>
+          <Link
+            className={`flex-1 text-center font-body-md text-sm py-1 transition-all duration-300 ${pathname === '/' ? 'text-primary font-bold border-b-2 border-primary' : 'text-on-surface-variant'}`}
+            href="/"
+          >
+            Home
+          </Link>
+          <Link
+            className={`flex-1 text-center font-body-md text-sm py-1 transition-all duration-300 ${pathname === '/book' ? 'text-primary font-bold border-b-2 border-primary' : 'text-on-surface-variant'}`}
+            href="/book"
+          >
+            Book Now
+          </Link>
         </div>
       </header>
 
