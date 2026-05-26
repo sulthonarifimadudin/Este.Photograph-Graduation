@@ -313,7 +313,7 @@ const portfolioImages = [
 
 export default function Portfolio() {
   return (
-    <main className="min-h-screen pt-32 pb-40 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+    <main className="min-h-screen pt-20 md:pt-32 pb-24 md:pb-40 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
       
       {/* Header Section */}
       <motion.div 
@@ -322,8 +322,8 @@ export default function Portfolio() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="text-center mb-16 relative"
       >
-        <h1 className="font-headline-xl text-5xl md:text-7xl text-primary tracking-tight mb-4">Our Gallery</h1>
-        <p className="font-editorial-accent text-3xl md:text-4xl text-secondary max-w-2xl mx-auto">
+        <h1 className="font-headline-xl text-4xl md:text-7xl text-primary tracking-tight mb-4">Our Gallery</h1>
+        <p className="font-editorial-accent text-2xl md:text-4xl text-secondary max-w-2xl mx-auto">
           Timeless stories preserved in every frame.
         </p>
       </motion.div>

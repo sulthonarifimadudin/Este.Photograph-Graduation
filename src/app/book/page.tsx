@@ -153,7 +153,7 @@ export default function BookSession() {
   }
 
   return (
-    <main className="min-h-screen relative pt-32 pb-40 px-margin-mobile md:px-margin-desktop">
+    <main className="min-h-screen relative pt-20 md:pt-32 pb-24 md:pb-40 px-margin-mobile md:px-margin-desktop">
       {/* Background soft blur */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-secondary-fixed/30 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-surface-variant/40 rounded-full blur-[120px] pointer-events-none" />
@@ -168,7 +168,7 @@ export default function BookSession() {
           <span className="material-symbols-outlined text-sm">arrow_back</span> BACK TO HOME
         </Link>
 
-        <div className="glass-panel p-8 md:p-12 rounded-3xl shadow-xl border-t border-t-white/60">
+        <div className="glass-panel p-6 md:p-12 rounded-3xl shadow-xl border-t border-t-white/60">
           <div className="mb-10 text-center relative">
             <h1 className="font-headline-xl text-4xl md:text-5xl tracking-tight text-primary mb-3">Book Your Session</h1>
             <p className="font-body-md text-on-surface-variant">Fill out the form below to secure your spot. No account required.</p>
@@ -210,7 +210,7 @@ export default function BookSession() {
                   placeholder="+62 812 3456 7890"
                 />
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 relative z-0">
+              <div className="grid grid-cols-2 gap-4 relative z-0">
                   <div className="flex flex-col gap-2">
                     <label htmlFor="sessionDate" className="text-[10px] font-label-caps tracking-widest text-primary/60">SESSION DATE</label>
                     <input 
