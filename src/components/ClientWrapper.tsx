@@ -70,10 +70,10 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
             Gallery
           </Link>
           <Link
-            className={`flex-1 text-center font-body-md text-sm py-1 transition-all duration-300 ${pathname === '/' ? 'text-primary font-bold border-b-2 border-primary' : 'text-on-surface-variant'}`}
-            href="/"
+            className={`flex-1 text-center font-body-md text-sm py-1 transition-all duration-300 ${pathname === '/#packages' ? 'text-primary font-bold border-b-2 border-primary' : 'text-on-surface-variant'}`}
+            href="/#packages"
           >
-            Home
+            Services
           </Link>
           <Link
             className={`flex-1 text-center font-body-md text-sm py-1 transition-all duration-300 ${pathname === '/book' ? 'text-primary font-bold border-b-2 border-primary' : 'text-on-surface-variant'}`}
