@@ -330,7 +330,7 @@ export default function Portfolio() {
       </motion.div>
 
       {/* Masonry Grid (Pinterest Style) */}
-      <div className="columns-1 sm:columns-2 lg:columns-3 gap-6">
+      <div className="columns-2 lg:columns-3 gap-3 md:gap-6">
         {portfolioImages.map((img, index) => (
           <motion.div
             key={img.id}
@@ -338,14 +338,14 @@ export default function Portfolio() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="break-inside-avoid relative group overflow-hidden rounded-2xl bg-surface-variant/30 mb-6"
+            className="break-inside-avoid relative group overflow-hidden rounded-xl md:rounded-2xl bg-surface-variant/30 mb-3 md:mb-6"
           >
             <Image 
               src={img.url} 
               alt={img.title}
               width={800}
               height={1200}
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              sizes="(max-width: 1024px) 50vw, 33vw"
               className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
