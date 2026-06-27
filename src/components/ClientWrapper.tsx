@@ -96,7 +96,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
       {/* Fixed Bottom Bar Footer */}
       <footer className={`fixed bottom-0 left-0 w-full py-4 bg-[#fbf9f5]/90 backdrop-blur-md border-t border-primary/10 z-50 transition-transform duration-500 ease-in-out ${scrolled ? "translate-y-0" : "translate-y-full"}`}>
         <div className="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto gap-4 md:gap-8 w-full">
-          <div className="flex flex-col items-center md:items-start gap-1">
+          <div className="hidden md:flex flex-col items-center md:items-start gap-1">
             <span className="font-label-caps text-[10px] text-on-surface-variant dark:text-on-primary-fixed-variant tracking-widest">
               © 2024 Este Photograph. Capturing timeless editorial stories.
             </span>
