@@ -19,7 +19,7 @@ export default function Home() {
           
           <div className="z-10 w-full flex flex-col md:flex-row items-center justify-between gap-8 lg:gap-24 relative">
             {/* Left Title/Typography Area */}
-            <div className="w-full md:w-5/12 flex flex-col items-center md:items-start text-center md:text-left space-y-4">
+            <div className="w-full md:w-5/12 flex flex-col items-center md:items-start text-center md:text-left space-y-4 order-2 md:order-1">
               <h1 className="flex flex-col relative z-20 items-center md:items-start text-center md:text-left mb-2 md:mb-0">
                 <div 
                   className="relative z-10 font-display-lg text-[34px] sm:text-[50px] md:text-[65px] lg:text-[75px] tracking-tight leading-none"
@@ -57,7 +57,7 @@ export default function Home() {
               </Link>
             </div>
             {/* Right Collage Area */}
-            <div className="w-full md:w-7/12 relative h-[300px] sm:h-[380px] md:h-[520px] flex justify-center items-center perspective-[1000px]">
+            <div className="w-full md:w-7/12 relative h-[300px] sm:h-[380px] md:h-[520px] flex justify-center items-center perspective-[1000px] order-1 md:order-2 mt-4 md:mt-0">
               {/* Central Large Image */}
               <div className="absolute z-20 w-[65%] md:w-[55%] h-[80%] rounded-xl overflow-hidden collage-shadow border-4 border-white transform transition-transform hover:scale-[1.02] duration-500 ease-out bg-surface-container-high">
                 <img
