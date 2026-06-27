@@ -17,7 +17,7 @@ export default function Home() {
             <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary-fixed-dim/30 rounded-full blur-[120px]"></div>
           </div>
           
-          <div className="z-10 w-full flex flex-col md:flex-row items-center justify-between gap-8 lg:gap-24 relative">
+          <div className="z-10 w-full flex flex-col md:flex-row items-center justify-between gap-2 md:gap-8 lg:gap-24 relative">
             {/* Left Title/Typography Area */}
             <div className="w-full md:w-5/12 flex flex-col items-center md:items-start text-center md:text-left space-y-4 order-2 md:order-1">
               <h1 className="flex flex-col relative z-20 items-center md:items-start text-center md:text-left mb-2 md:mb-0">
@@ -57,7 +57,7 @@ export default function Home() {
               </Link>
             </div>
             {/* Right Collage Area */}
-            <div className="w-full md:w-7/12 relative h-[300px] sm:h-[380px] md:h-[520px] flex justify-center items-center perspective-[1000px] order-1 md:order-2 mt-4 md:mt-0">
+            <div className="w-full md:w-7/12 relative h-[250px] sm:h-[380px] md:h-[520px] flex justify-center items-center perspective-[1000px] order-1 md:order-2 mb-4 md:mb-0">
               {/* Central Large Image */}
               <div className="absolute z-20 w-[65%] md:w-[55%] h-[80%] rounded-xl overflow-hidden collage-shadow border-4 border-white transform transition-transform hover:scale-[1.02] duration-500 ease-out bg-surface-container-high">
                 <img
@@ -108,7 +108,7 @@ export default function Home() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true, margin: "-100px" }}
-          className="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-stack-lg relative" 
+          className="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-stack-lg relative mt-8 md:mt-0" 
           id="packages"
         >
           <div className="text-center mb-8 md:mb-16">
