@@ -64,6 +64,21 @@ export default function AdminDashboard() {
     }
   };
 
+  const verifyPayment = async (id: string, type: 'dp' | 'pelunasan') => {
+    try {
+      const docRef = doc(db, "bookings", id);
+      if (type === 'dp') {
+        await updateDoc(docRef, { dpPaid: true, progress: "booking_confirmed" });
+      } else {
+        await updateDoc(docRef, { pelunasanPaid: true, progress: "ready_to_download" });
+      }
+      alert("Payment verified successfully!");
+    } catch (err) {
+      console.error("Verification error:", err);
+      alert("Failed to verify payment.");
+    }
+  };
+
   const executeDelete = async () => {
     if (!deleteConfirmId) return;
     try {
@@ -151,10 +166,34 @@ export default function AdminDashboard() {
       );
     }
     if (p === "awaiting_dp") {
-      return <span className="font-label-caps text-xs text-orange-600 font-bold bg-orange-100 px-4 py-2 rounded-full">WAITING CLIENT DP</span>;
+      return (
+        <div className="flex flex-col items-end gap-2">
+          <span className="font-label-caps text-xs text-orange-600 font-bold bg-orange-100 px-4 py-2 rounded-full">WAITING CLIENT DP</span>
+          {booking.dpProofSubmitted && (
+            <button 
+              onClick={() => verifyPayment(booking.id, 'dp')}
+              className="bg-secondary text-white px-4 py-2 rounded-full font-label-caps tracking-widest text-xs hover:bg-primary transition-colors flex items-center gap-1"
+            >
+              <span className="material-symbols-outlined text-sm">verified</span> VERIFY DP
+            </button>
+          )}
+        </div>
+      );
     }
     if (p === "awaiting_pelunasan") {
-      return <span className="font-label-caps text-xs text-blue-600 font-bold bg-blue-100 px-4 py-2 rounded-full">WAITING FINAL PAY</span>;
+      return (
+        <div className="flex flex-col items-end gap-2">
+          <span className="font-label-caps text-xs text-blue-600 font-bold bg-blue-100 px-4 py-2 rounded-full">WAITING FINAL PAY</span>
+          {booking.finalProofSubmitted && (
+            <button 
+              onClick={() => verifyPayment(booking.id, 'pelunasan')}
+              className="bg-secondary text-white px-4 py-2 rounded-full font-label-caps tracking-widest text-xs hover:bg-primary transition-colors flex items-center gap-1"
+            >
+              <span className="material-symbols-outlined text-sm">verified</span> VERIFY FINAL
+            </button>
+          )}
+        </div>
+      );
     }
     if (p === "ready_to_download") {
       return <span className="font-label-caps text-xs text-green-700 font-bold bg-green-100 px-4 py-2 rounded-full flex items-center gap-2"><span className="material-symbols-outlined text-sm">check_circle</span> DONE</span>;

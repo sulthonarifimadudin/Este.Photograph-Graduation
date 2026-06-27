@@ -6,7 +6,6 @@ import { db } from "../../../lib/firebase";
 import { doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Script from "next/script";
 
 const PROGRESS_STEPS = [
   { id: "pending_approval", label: "Pending" },
@@ -23,7 +22,6 @@ export default function ClientDashboard() {
   const router = useRouter();
   const [booking, setBooking] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [paymentLoading, setPaymentLoading] = useState(false);
   const [showReschedule, setShowReschedule] = useState(false);
   const [rescheduleDate, setRescheduleDate] = useState("");
   const [rescheduleTime, setRescheduleTime] = useState("");
@@ -67,63 +65,6 @@ export default function ClientDashboard() {
   const currentStepIndex = PROGRESS_STEPS.findIndex(step => step.id === (booking.progress || "pending_approval"));
   const isReady = booking.progress === "ready_to_download";
 
-  const handlePayment = async (type: 'dp' | 'pelunasan') => {
-    setPaymentLoading(true);
-    try {
-      const amount = booking.packagePrice / 2;
-      
-      const res = await fetch('/api/midtrans', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          bookingCode: booking.bookingCode,
-          type,
-          amount,
-          clientName: booking.clientName,
-          clientEmail: booking.email,
-          clientPhone: booking.phone
-        })
-      });
-
-      const data = await res.json();
-      
-      if (data.token) {
-        // @ts-ignore
-        window.snap.pay(data.token, {
-          onSuccess: async function(result: any) {
-            console.log("Payment success!");
-            try {
-              const docRef = doc(db, "bookings", booking.id);
-              if (type === 'dp') {
-                await updateDoc(docRef, { dpPaid: true, progress: "booking_confirmed" });
-              } else {
-                await updateDoc(docRef, { pelunasanPaid: true, progress: "ready_to_download" });
-              }
-              alert("Payment successful! The page will update automatically.");
-            } catch(e) {
-              console.error("Failed to update status", e);
-            }
-          },
-          onPending: function(result: any) {
-            alert("Waiting for your payment.");
-          },
-          onError: function(result: any) {
-            alert("Payment failed!");
-          },
-          onClose: function () {
-            console.log('Customer closed the popup without finishing the payment');
-          }
-        });
-      } else {
-        alert("Failed to initiate payment: " + (data.error || "Unknown error"));
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Something went wrong");
-    } finally {
-      setPaymentLoading(false);
-    }
-  };
 
   const handleReschedule = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -150,11 +91,6 @@ export default function ClientDashboard() {
 
   return (
     <main className="min-h-screen relative pt-32 pb-40 px-margin-mobile md:px-margin-desktop overflow-hidden">
-      <Script 
-        src="https://app.sandbox.midtrans.com/snap/snap.js" 
-        data-client-key={process.env.NEXT_PUBLIC_MIDTRANS_CLIENT_KEY}
-        strategy="lazyOnload"
-      />
       {/* Background Soft Blurs */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-secondary-fixed/30 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-surface-variant/40 rounded-full blur-[120px] pointer-events-none" />
@@ -252,13 +188,19 @@ export default function ClientDashboard() {
                 <span className="material-symbols-outlined text-5xl text-secondary mb-4">payments</span>
                 <h3 className="font-headline-lg text-2xl text-primary mb-2">Down Payment Required</h3>
                 <p className="font-body-md text-on-surface-variant mb-6">Please pay the 50% DP to lock your session schedule.</p>
-                <button 
-                  onClick={() => handlePayment('dp')}
-                  disabled={paymentLoading}
-                  className="inline-flex bg-secondary text-white py-4 px-8 rounded-full font-label-caps tracking-widest hover:bg-primary hover:shadow-xl transition-all items-center gap-2"
-                >
-                  {paymentLoading ? 'PROCESSING...' : 'PAY DP 50%'}
-                </button>
+                {booking.dpProofSubmitted ? (
+                  <div className="inline-flex bg-orange-100 text-orange-700 py-3 px-6 rounded-full font-label-caps tracking-widest font-bold items-center gap-2">
+                    <span className="material-symbols-outlined text-xl">pending_actions</span>
+                    Menunggu Verifikasi Admin
+                  </div>
+                ) : (
+                  <Link 
+                    href={`/pay/${booking.bookingCode}/dp`}
+                    className="inline-flex bg-secondary text-white py-4 px-8 rounded-full font-label-caps tracking-widest hover:bg-primary hover:shadow-xl transition-all items-center gap-2"
+                  >
+                    PAY DP 50%
+                  </Link>
+                )}
               </>
             )}
 
@@ -267,13 +209,19 @@ export default function ClientDashboard() {
                 <span className="material-symbols-outlined text-5xl text-secondary mb-4">lock_open</span>
                 <h3 className="font-headline-lg text-2xl text-primary mb-2">Photos are ready!</h3>
                 <p className="font-body-md text-on-surface-variant mb-6">Pay the remaining 50% balance to unlock your Google Drive download link.</p>
-                <button 
-                  onClick={() => handlePayment('pelunasan')}
-                  disabled={paymentLoading}
-                  className="inline-flex bg-secondary text-white py-4 px-8 rounded-full font-label-caps tracking-widest hover:bg-primary hover:shadow-xl transition-all items-center gap-2"
-                >
-                  {paymentLoading ? 'PROCESSING...' : 'PAY FINAL 50%'}
-                </button>
+                {booking.finalProofSubmitted ? (
+                  <div className="inline-flex bg-orange-100 text-orange-700 py-3 px-6 rounded-full font-label-caps tracking-widest font-bold items-center gap-2">
+                    <span className="material-symbols-outlined text-xl">pending_actions</span>
+                    Menunggu Verifikasi Admin
+                  </div>
+                ) : (
+                  <Link 
+                    href={`/pay/${booking.bookingCode}/final`}
+                    className="inline-flex bg-secondary text-white py-4 px-8 rounded-full font-label-caps tracking-widest hover:bg-primary hover:shadow-xl transition-all items-center gap-2"
+                  >
+                    PAY FINAL 50%
+                  </Link>
+                )}
               </>
             )}
 
