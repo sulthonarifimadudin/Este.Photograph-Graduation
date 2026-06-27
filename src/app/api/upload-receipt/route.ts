@@ -39,13 +39,13 @@ export async function POST(req: Request) {
     `;
 
     const info = await transporter.sendMail({
-      from: \`"Este Photograph System" <\${process.env.EMAIL_USER}>\`,
+      from: `"Este Photograph System" <${process.env.EMAIL_USER}>`,
       to: "sulthonarifimadudin@gmail.com",
-      subject: \`[Bukti Pembayaran] \${bookingCode} - \${paymentType}\`,
+      subject: `[Bukti Pembayaran] ${bookingCode} - ${paymentType}`,
       html: htmlContent,
       attachments: [
         {
-          filename: \`receipt-\${bookingCode}-\${type}.jpg\`,
+          filename: `receipt-${bookingCode}-${type}.jpg`,
           content: base64Data,
           encoding: 'base64'
         }

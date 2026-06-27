@@ -115,12 +115,12 @@ export default function PaymentPage() {
 
           <div className="mb-8 text-center">
             <p className="font-body-md text-primary font-bold mb-4">Silakan scan QRIS di bawah ini menggunakan e-wallet atau m-banking Anda:</p>
-            <div className="relative w-64 h-64 mx-auto border-2 border-primary/10 rounded-2xl overflow-hidden p-4 bg-white">
+            <div className="relative w-80 md:w-96 aspect-square mx-auto border-2 border-primary/10 rounded-2xl overflow-hidden p-2 bg-white">
               <Image 
                 src="/QrisStatisEste Corp-19.png" 
                 alt="QRIS Este Photograph" 
                 fill 
-                className="object-contain p-4"
+                className="object-contain p-2"
               />
             </div>
             <p className="text-sm text-primary/60 mt-4">a.n. Este Corp</p>

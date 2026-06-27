@@ -60,7 +60,7 @@ export default function RootLayout({
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
       </head>
-      <body className="min-h-full flex flex-col font-body-md bg-background text-on-background selection:bg-secondary/20 selection:text-primary antialiased">
+      <body suppressHydrationWarning className="min-h-full flex flex-col font-body-md bg-background text-on-background selection:bg-secondary/20 selection:text-primary antialiased">
         <ClientWrapper>
           {children}
         </ClientWrapper>
