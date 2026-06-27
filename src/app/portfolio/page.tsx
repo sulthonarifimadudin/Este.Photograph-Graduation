@@ -348,10 +348,10 @@ export default function Portfolio() {
               sizes="(max-width: 1024px) 50vw, 33vw"
               className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-              <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                <p className="font-label-caps text-xs text-secondary-fixed tracking-widest mb-1">GRADUATION</p>
-                <h3 className="font-headline-lg text-2xl text-white">{img.title}</h3>
+            <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-3 md:p-6">
+              <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500 w-full">
+                <p className="font-label-caps text-[8px] md:text-xs text-secondary-fixed tracking-widest mb-1">GRADUATION</p>
+                <h3 className="font-headline-lg text-sm md:text-2xl text-white leading-tight">{img.title}</h3>
               </div>
             </div>
           </motion.div>
